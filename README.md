@@ -1,6 +1,6 @@
 ---
 title: Introduction to QA Automation
-author: By Srinesh Nisala
+sub_title: (Quality Assurance)
 theme:
   name: catppuccin-mocha
 options:
@@ -20,9 +20,8 @@ options:
 # Heads up
 
 - This is my first time giving a lecture, so I hope you'll be patient with me!
-- This includes my opinion + experience and some of the things might be
-  different from the theory you have learnt
-- My English is ok but it gets worse over long period of time XD
+- This includes my opinion + experience and some of the things might be different from the theory you have learnt
+- My English is ok but it gets worse over long period of time
 
 ---
 
@@ -77,15 +76,26 @@ options:
 
 # Final Tips
 
-- Don't be afraid to ask an increment
+- Don't be afraid to ask an increment, change in responsibility etc...
 - Make sure you’re not staying in one place for too long without growth
+
+---
+
+<!-- jump_to_middle -->
+<!-- column_layout: [1, 1, 1] -->
+<!-- column: 1 -->
+
+# Questions?
 
 ---
 
 # Test types
 
 > [!TIP]
-> Strike a balance — don't automate everything, but don't do everything manually either.
+> Don't automate everything, but don't do everything manually either
+
+> [!TIP]
+> No company has enough budget to do all these tests
 
 > [!NOTE]
 > There may not be strict guidelines on who is responsible for which tests
@@ -225,3 +235,29 @@ Purpose: Ensure the UI visually appears as intended after updates by comparing s
 [source](https://github.com/rsmbl/Resemble.js/blob/581c1bb757e3fdd7f151c47ad8ca6eafcce5019a/nodejs-tests/compareImages.test.js?plain=1#L9-L23)
 
 ![visual regression test example from resemblejs](assets/visual-regression-test-example-from-resemblejs.png)
+
+---
+
+<!-- jump_to_middle -->
+<!-- column_layout: [1, 1, 1] -->
+<!-- column: 1 -->
+
+# Questions?
+
+---
+
+# Why UI testing? (Manual / Automated)
+
+- Validate User Experience
+- Cross-Browser and Cross-Device Compatibility
+- Detect Visual Defects
+- Test Integration with Back-End
+- Accessibility Compliance
+
+# Why automated testing
+
+- Saves time and effort
+- Improves accuracy
+- Detects regression issues quickly
+- Reduces costs in the long run
+- Supports agile and devops practices
