@@ -261,3 +261,25 @@ Purpose: Ensure the UI visually appears as intended after updates by comparing s
 - Detects regression issues quickly
 - Reduces costs in the long run
 - Supports agile and devops practices
+
+---
+
+<!-- jump_to_middle -->
+<!-- column_layout: [1, 1, 1] -->
+<!-- column: 1 -->
+
+# Questions?
+
+---
+
+# Using Selenium
+
+## Pre-requisites
+
+1. Create a new Java project
+
+```bash
+gradle init
+```
+
+---
