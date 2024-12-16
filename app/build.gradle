@@ -21,6 +21,8 @@ dependencies {
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.27.0'
+
     // This dependency is used by the application.
     implementation libs.guava
 }
