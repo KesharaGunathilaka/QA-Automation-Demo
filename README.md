@@ -17,6 +17,15 @@ options:
 
 ---
 
+# Heads up
+
+- This is my first time giving a lecture, so I hope you'll be patient with me!
+- This includes my opinion + experience and some of the things might be
+  different from the theory you have learnt
+- My English is ok but it gets worse over long period of time XD
+
+---
+
 # Job Designations
 
 > [!TIP]
@@ -26,7 +35,7 @@ options:
 > If a job vacancy is titled _"QA Engineer"_, it likely indicates they are seeking someone proficient in both manual and automated testing
 
 > [!TIP]
-> If the job vacancy specifies _"QA Automation Engineer,"_ your primary focus will likely be on automation tasks
+> If the job vacancy specifies _"QA Automation Engineer"_, your primary focus will likely be on automation tasks
 
 - **Manual QA Engineer** - _No programming knowledge needed_
 - **QA Automation Engineer** - _Need basic programming knowledge_
@@ -43,7 +52,8 @@ options:
 > Salary varies based on various different things
 >
 > - Your performance & skills
-> - Designation
+> - Experience
+> - \* Designation \*
 > - Based on the company
 > - Company politics (You could see this in very few work places)
 
@@ -65,11 +75,38 @@ options:
 
 ---
 
-# Automated test types
+# Final Tips
+
+- Don't be afraid to ask an increment
+- Make sure you’re not staying in one place for too long without growth
 
 ---
 
-# 1. Unit Tests
+# Test types
+
+> [!TIP]
+> Strike a balance — don't automate everything, but don't do everything manually either.
+
+> [!NOTE]
+> There may not be strict guidelines on who is responsible for which tests
+
+- Unit Tests
+- Integration Tests
+- Functional Tests
+- Regression Tests
+- Smoke Tests
+- Performance Tests
+- Load Tests
+- Security Tests
+- Acceptance Tests
+- End-to-End Tests
+- UI Tests
+- API Tests
+- Visual Regression Tests
+
+---
+
+# Unit Tests (By Developer)
 
 Purpose: Test individual components or functions of a program to ensure they work as expected.
 Tools: JUnit, Vitest, pytest.
@@ -80,7 +117,7 @@ Tools: JUnit, Vitest, pytest.
 
 ---
 
-# 2. Integration Tests
+# Integration Tests (By Developer)
 
 Purpose: Verify that different modules or services within an application work together as intended.
 Tools: Postman, REST-assured
@@ -91,7 +128,7 @@ Tools: Postman, REST-assured
 
 ---
 
-# 3. Functional Tests
+# Functional Tests (By QA)
 
 Purpose: Ensure the software behaves according to the specified requirements and that the user’s interactions perform correctly.
 Example: Checking that a user can successfully log in using correct credentials.
@@ -99,7 +136,7 @@ Tools: Selenium, Cypress, Playwright.
 
 ---
 
-# 4. Regression Tests
+# Regression Tests (By QA)
 
 Purpose: Verify that new changes or features haven't broken existing functionality.
 Example: Ensuring that a new feature doesn’t interfere with previous features like login, search, etc.
@@ -107,7 +144,7 @@ Tools: Selenium, TestComplete, QTP.
 
 ---
 
-# 5. Smoke Tests
+# Smoke Tests (By QA)
 
 Purpose: Perform basic tests to determine if the critical functionalities of the software work after a build or release.
 
@@ -117,51 +154,43 @@ Purpose: Perform basic tests to determine if the critical functionalities of the
 
 ---
 
-# 6. Performance Tests
+# Performance Tests (By QA Maybe)
 
-Purpose: Evaluate the software’s performance under expected and peak load conditions.
-Example: Measuring how the system performs with hundreds of simultaneous users.
-Tools: JMeter, LoadRunner, Gatling.
+Purpose: Evaluate the software’s performance & condition.
+
+![Performance test from chrome lighthouse for google](assets/performance-test-from-chrome-lighthouse-for-google.png)
 
 ---
 
-# 7. Load Tests
+# Load Tests (By QA Maybe)
 
 Purpose: Test how the application performs under normal and heavy load conditions.
 Example: Assessing how many users a website can handle at once without crashing.
 Tools: Apache JMeter, BlazeMeter, LoadRunner.
 
----
+[source](https://github.com/antonputra/tutorials/blob/5098b4b9738a920a8a5708f7721faa843449855f/lessons/145/tests/go-app-1.js?plain=1#L4-L31)
 
-# 8. Stress Tests
-
-Purpose: Evaluate the system’s stability under extreme conditions or when it exceeds the expected load.
-Example: Pushing a server to its limits to identify breaking points and failure handling.
-Tools: JMeter, Gatling, LoadRunner.
+![Load test from Anton Putra's Youtube](assets/load-test-example-from-Anton-Putra-youtube.png)
 
 ---
 
-# 9. Security Tests
+# Security Tests (By Security Testers & maybe by QA)
 
 Purpose: Identify vulnerabilities in the software, ensuring data protection and preventing security breaches.
-Example: Testing for SQL injection, cross-site scripting (XSS), or unauthorized access attempts.
-Tools: OWASP ZAP, Burp Suite, Selenium.
+
+![Security test example with zap](assets/security-test-example-with-zap.png)
 
 ---
 
-# 10. Acceptance Tests
+# Acceptance Tests (By Client)
 
 Purpose: Validate whether the software meets the client’s requirements and is ready for production.
-Example: Testing if a final feature matches the business specifications and customer expectations.
-Tools: Cucumber, Selenium, FitNesse.
 
 ---
 
-# 11. End-to-End (E2E) Tests
+# End-to-End Tests (By QA)
 
 Purpose: Test the entire application workflow from start to finish to ensure the system works as expected in a production-like environment.
-Example: A user registering, purchasing a product, and receiving an order confirmation email.
-Tools: Cypress, Selenium, Playwright.
 
 [source](https://github.com/Chocobozzz/PeerTube/blob/0b145cfc9ac2eebd3ca922a7e38cf000e7e75348/client/e2e/src/suites-local/signup.e2e-spec.ts?plain=1#L322-L407)
 
@@ -169,7 +198,7 @@ Tools: Cypress, Selenium, Playwright.
 
 ---
 
-# 12. UI Tests (User Interface)
+# UI Tests (By QA)
 
 Purpose: Ensure the user interface works as intended, including button clicks, form inputs, and navigation.
 Example: Verifying that a "Submit" button works after entering data in a form.
@@ -177,26 +206,22 @@ Tools: Selenium, Cypress, TestCafe.
 
 ---
 
-# 13. API Tests
+# API Tests (By QA)
 
 Purpose: Validate that APIs return the correct data and handle requests appropriately.
 Example: Ensuring a weather API returns accurate weather data based on the requested parameters.
 Tools: Postman, RestAssured, SoapUI.
 
+[source](https://github.com/typicode/json-server/blob/6aa56d9581488d9bcd1baf42c4c97b293cd9ee99/src/app.test.ts?plain=1#L109-L128)
+
+![API test example from json placeholder](assets/api-test-example-from-jsonplaceholder.png)
+
 ---
 
-# 14. Visual Regression Tests
+# Visual Regression Tests (By QA)
 
 Purpose: Ensure the UI visually appears as intended after updates by comparing screenshots.
-Example: Checking if design elements like buttons, fonts, and images appear correctly after a new release.
-Tools: Percy, Applitools, BackstopJS.
 
----
+[source](https://github.com/rsmbl/Resemble.js/blob/581c1bb757e3fdd7f151c47ad8ca6eafcce5019a/nodejs-tests/compareImages.test.js?plain=1#L9-L23)
 
-# 15. Cross-Browser Tests
-
-Purpose: Verify that the application works across different browsers and devices.
-Example: Ensuring a website functions the same on Chrome, Firefox, and Safari.
-Tools: BrowserStack, Selenium, CrossBrowserTesting.
-
----
+![visual regression test example from resemblejs](assets/visual-regression-test-example-from-resemblejs.png)
