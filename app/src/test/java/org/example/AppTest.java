@@ -5,17 +5,13 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
   @Test
   void appHasAGreeting() {
-    var options = new FirefoxOptions();
-    // options.setCapability("webSocketUrl", true);
-    System.out.println("hello");
-    var browser = new FirefoxDriver(options);
+    var browser = new FirefoxDriver();
     browser.get("https://www.google.com");
     browser.close();
   }
