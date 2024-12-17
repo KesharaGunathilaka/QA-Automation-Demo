@@ -11,9 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
   @Test
-  void appHasAGreeting() throws InterruptedException {
+  void appHasAGreeting() {
     var options = new FirefoxOptions();
     // options.setCapability("webSocketUrl", true);
+    System.out.println("hello");
     var browser = new FirefoxDriver(options);
     browser.get("https://www.google.com");
     browser.close();
