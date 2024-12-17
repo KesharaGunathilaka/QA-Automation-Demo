@@ -21,7 +21,7 @@ options:
 
 - This is my first time giving a lecture, so I hope you'll be patient with me!
 - This includes my opinion + experience and some of the things might be different from the theory you have learnt
-- My English is ok but it gets worse over long period of time
+- Anything that has the potential to go wrong is likely to do so during a live demo
 
 ---
 
@@ -272,14 +272,78 @@ Purpose: Ensure the UI visually appears as intended after updates by comparing s
 
 ---
 
-# Using Selenium
+# Selenium
+
+## Major components of Selenium
+
+- **Web Driver** - tldr; jar file with bunch of classes to automate browser
+- **Selenium IDE** - tldr; records actions you perform on browser and creates an automation script
+- **Selenium Grid** - tldr; Run tests remotely
+
+![Selenium components](assets/selenium-components.png)
+
+---
+
+## Selenium IDE hands on
+
+> [!NOTE]
+> Scrips created by this plugin is pretty terrible
+> Not necessarily because it's bad engineering
+> It's genuinely a hard problem
+
+- Download and install the [Selenium IDE](https://www.selenium.dev/selenium-ide/) (4MB)
+- Create a new project
+- Start a new recording with [https://demoqa.com/text-box](https://demoqa.com/text-box)
+- Export the recorded script to a Java JUnit file
+
+> [!NOTE]
+> Generated code is using JUnit 4
+
+---
+
+## Selenium Web Driver hands on
 
 ## Pre-requisites
 
-1. Create a new Java project
+- Java 21
+- Gradle 8
+- Firefox
+- VSCode with **Extension Pack for Java** (or any other Java IDE)
+
+---
+
+## Step 1
+
+[changes](https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/main...step-1)
+
+- Create a new Java project
 
 ```bash
 gradle init
 ```
 
+## Step 2
+
+[changes](https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/step-1...step-2)
+
+- Add selenium as dependency
+
+```groovy
+# app/build.gradle
+testImplementation 'org.seleniumhq.selenium:selenium-java:4.27.0'
+```
+
+- Add a sample test
+
+```java
+@Test
+void test() {
+  var browser = new FirefoxDriver();
+  browser.get("https://www.google.com");
+  browser.close();
+}
+```
+
 ---
+
+## Step 3
