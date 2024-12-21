@@ -1,12 +1,10 @@
 package org.example;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.example.pages.DemoQATextboxOutputPage;
+import org.example.pages.DemoQATextboxPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -23,24 +21,14 @@ public class DemoQATest {
     }
 
     @Test
-    void test() throws InterruptedException {
+    void test() {
         browser.get("https://demoqa.com/text-box");
-        var pageHeader = browser.findElement(By.tagName("h1"));
-        assertEquals(pageHeader.getText(), "Text Box");
 
-        browser.findElement(By.id("userName")).sendKeys("Srinesh Nisala");
-        browser.findElement(By.id("userEmail")).sendKeys("random@gmail.com");
+        var fullName = "Srinesh Nisala";
+        var email = "random@gmail.com";
 
-        var submitBtn = browser.findElement(By.id("submit"));
-        ((JavascriptExecutor) browser).executeScript("arguments[0].scrollIntoView(true);", submitBtn);
-        submitBtn.click();
-
-        var output = browser.findElement(By.id("output"));
-        var acName = output.findElement(By.id("name")).getText();
-        var acEmail = output.findElement(By.id("email")).getText();
-
-        assertTrue(acName.endsWith("Srinesh Nisala"));
-        assertTrue(acEmail.endsWith("random@gmail.com"));
+        DemoQATextboxPage.init(browser).fillForm(fullName, email);
+        DemoQATextboxOutputPage.init(browser).validateForm(fullName, email);
     }
 
     @AfterEach
