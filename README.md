@@ -285,7 +285,7 @@ ELI5 description
 > Not necessarily because it's bad engineering
 > It's genuinely a hard problem
 
-- Download and install the [Selenium IDE](https://www.selenium.dev/selenium-ide/) (4MB)
+- Download and install the [Selenium IDE](https://www.selenium.dev/selenium-ide) (4MB)
 - Create a new project
 - Start a new recording with [https://demoqa.com/text-box](https://demoqa.com/text-box)
 - Export the recorded script to a Java JUnit file
@@ -399,6 +399,11 @@ browser = new FirefoxDriver(options);
 
 ## Step 3 - DemoQA form validation
 
+- Manually check the website [https://demoqa.com/text-box](https://demoqa.com/text-box)
+- Inspect the element in the form and output
+- Capture the element to execute actions
+- Validate the data after submit
+
 ```java
 @BeforeEach
 public void beforeEach() {
@@ -446,6 +451,14 @@ ELI5 description;
 ---
 
 ## Step 4 - Page object model design pattern
+
+### Why page object model
+
+- Re-usability
+- Ease of maintenance
+- Better readability and clarity
+
+---
 
 <!-- column_layout: [1, 1] -->
 
