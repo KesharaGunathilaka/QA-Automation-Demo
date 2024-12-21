@@ -264,17 +264,11 @@ Purpose: Ensure the UI visually appears as intended after updates by comparing s
 
 ---
 
-<!-- jump_to_middle -->
-<!-- column_layout: [1, 1, 1] -->
-<!-- column: 1 -->
-
-# Questions?
-
----
-
 # Selenium
 
 ## Major components of Selenium
+
+ELI5 description
 
 - **Web Driver** - tldr; jar file with bunch of classes to automate browser
 - **Selenium IDE** - tldr; records actions you perform on browser and creates an automation script
@@ -312,7 +306,7 @@ Purpose: Ensure the UI visually appears as intended after updates by comparing s
 
 ---
 
-## Step 1
+## Step 1 - Setting up Java project for test
 
 [changes](https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/main...step-1)
 
@@ -322,7 +316,9 @@ Purpose: Ensure the UI visually appears as intended after updates by comparing s
 gradle init
 ```
 
-## Step 2
+---
+
+## Step 2 - Google page load test
 
 [changes](https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/step-1...step-2)
 
@@ -337,13 +333,173 @@ testImplementation 'org.seleniumhq.selenium:selenium-java:4.27.0'
 
 ```java
 @Test
-void test() {
+void appHasAGreeting() {
   var browser = new FirefoxDriver();
   browser.get("https://www.google.com");
+
+  // this is the test
+  assertEquals(browser.getTitle(), "Google");
   browser.close();
 }
 ```
 
 ---
 
-## Step 3
+## Webdriver classic, WebDriver BiDi
+
+```shell
+Dec 21, 2024 9:12:29 AM org.openqa.selenium.firefox.FirefoxDriver <init>
+WARNING: CDP support for Firefox is deprecated and will be removed in future versions. Please switch to WebDriver BiDi.
+```
+
+### WebDriver classic architecture
+
+![webdriver classic architecture](assets/webdriver-classic-architecture.png)
+
+### WebDriver BiDi architecture
+
+![webdriver bidi architecture](assets/webdriver-bidi-architecture.png)
+
+To enable BiDi all you have to do is,
+
+```java
+var options = new FirefoxOptions();
+options.setCapability("webSocketUrl", true);
+browser = new FirefoxDriver(options);
+```
+
+---
+
+## Remove extensions
+
+> [!NOTE]
+> While most Selenium commands are included in the specification, some things are browser specific
+
+### On Chrome
+
+```java
+var options = new ChromeOptions();
+options.addArguments("--disable-extensions");
+browser = new ChromeDriver(options);
+```
+
+### On Firefox
+
+```java
+var options = new FirefoxOptions();
+options.addArguments("--safe-mode");
+browser = new FirefoxDriver(options);
+```
+
+> [!NOTE]
+> --safe-mode flag in Firefox disables multiple features including extensions
+> Such as Hardware Acceleration & Themes etc
+
+---
+
+## Step 3 - DemoQA form validation
+
+```java
+@BeforeEach
+public void beforeEach() {
+  var options = new FirefoxOptions();
+  options.addArguments("--safe-mode");
+  options.setCapability("webSocketUrl", true);
+  browser = new FirefoxDriver(options);
+}
+```
+
+```java
+browser.get("https://demoqa.com/text-box");
+var pageHeader = browser.findElement(By.tagName("h1"));
+assertEquals(pageHeader.getText(), "Text Box");
+
+browser.findElement(By.id("userName")).sendKeys("Srinesh Nisala");
+browser.findElement(By.id("userEmail")).sendKeys("random@gmail.com");
+
+var submitBtn = browser.findElement(By.id("submit"));
+((JavascriptExecutor) browser).executeScript("arguments[0].scrollIntoView(true);", submitBtn);
+submitBtn.click();
+
+var output = browser.findElement(By.id("output"));
+var acName = output.findElement(By.id("name")).getText();
+var acEmail = output.findElement(By.id("email")).getText();
+
+assertTrue(acName.endsWith("Srinesh Nisala"));
+assertTrue(acEmail.endsWith("random@gmail.com"));
+```
+
+---
+
+## Common Exceptions
+
+ELI5 description;
+
+- `NoSuchElementException` - Element you are looking for is not in the webpage. If selector is correct, see if it's inside an iframe
+- `StaleElementReferenceException` - Element was there but not right now
+- `ElementClickInterceptedException` - Popup probably covering the element or not in the view
+
+> [!TIP]
+> Looking for info? Search in [documentation](https://www.selenium.dev/documentation) first
+> Then try GPTing it or try Stackoverflow
+
+---
+
+## Step 4 - Page object model design pattern
+
+<!-- column_layout: [1, 1] -->
+
+<!-- column: 0 -->
+
+```java
+public class DemoQATextboxPage {
+  private WebDriver browser;
+
+  @FindBy(id = "userName")
+  private WebElement fullName;
+
+  @FindBy(id = "userEmail")
+  private WebElement email;
+
+  @FindBy(id = "submit")
+  private WebElement submit;
+
+  DemoQATextboxPage(WebDriver browser) {
+    this.browser = browser;
+    PageFactory.initElements(browser, this);
+  }
+
+  public void fillForm(String fullName, String email) {
+    this.fullName.sendKeys(fullName);
+    this.email.sendKeys(email);
+    ((JavascriptExecutor) this.browser).executeScript("arguments[0].scrollIntoView(true);", this.submit);
+    this.submit.click();
+  }
+}
+```
+
+<!-- column: 1 -->
+
+```java
+public class DemoQATextboxOutputPage {
+  @FindBy(id = "name")
+  private WebElement name;
+
+  @FindBy(id = "email")
+  private WebElement email;
+
+  DemoQATextboxOutputPage(WebDriver browser) {
+    var output = browser.findElement(By.id("output"));
+    PageFactory.initElements(output, this);
+  }
+
+  public void validateForm(String expFullName, String expEmail) {
+    assertTrue(this.name.getText().endsWith(expFullName));
+    assertTrue(this.email.getText().endsWith(expEmail));
+  }
+}
+```
+
+---
+
+## test
