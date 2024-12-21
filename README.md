@@ -536,6 +536,8 @@ public class DemoQATextboxOutputPage {
 
 # Step 5 - Data driven testing
 
+(changes)[https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/step-4...step-5]
+
 Data-Driven Testing (DDT) is a software testing methodology in which test scripts execute a set of test cases using different sets of input data.
 
 > [!NOTE]
@@ -559,6 +561,8 @@ void test(String detils) {
 ---
 
 # Step 6 - Headless mode
+
+(changes)[https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/step-5...step-6]
 
 ### Chrome
 
