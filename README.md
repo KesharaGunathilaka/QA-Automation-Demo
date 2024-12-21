@@ -280,7 +280,7 @@ ELI5 description
 ## Selenium IDE hands on
 
 > [!NOTE]
-> Scrips created by this plugin is pretty terrible
+> Scripts created by this plugin is pretty terrible
 > Not necessarily because it's bad engineering
 > It's genuinely a hard problem
 
