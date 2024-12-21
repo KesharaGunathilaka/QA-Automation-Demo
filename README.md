@@ -19,7 +19,6 @@ options:
 
 # Heads up
 
-- This is my first time giving a lecture, so I hope you'll be patient with me!
 - This includes my opinion + experience and some of the things might be different from the theory you have learnt
 - Anything that has the potential to go wrong is likely to do so during a live demo
 
