@@ -24,6 +24,15 @@ options:
 
 ---
 
+# We will be covering following
+
+- Little bit about the jobs
+- Types of test
+- UI testing
+- Automated UI testing with Selenium
+
+---
+
 # Job Designations
 
 > [!TIP]
@@ -35,9 +44,13 @@ options:
 > [!TIP]
 > If the job vacancy specifies _"QA Automation Engineer"_, your primary focus will likely be on automation tasks
 
+## Programming knowledge vs QA
+
 - **Manual QA Engineer** - _No programming knowledge needed_
 - **QA Automation Engineer** - _Need basic programming knowledge_
-- **Software Developer** - _Need good programming knowledge_
+
+> [!NOTE]
+> Some companies has their own in-house automation tools that requires no programming knowledge to automate an applications
 
 ---
 
@@ -91,6 +104,9 @@ options:
 # Test types
 
 > [!TIP]
+> Better to memorize types of test in an interview
+
+> [!TIP]
 > Don't automate everything, but don't do everything manually either
 
 > [!TIP]
@@ -118,7 +134,6 @@ options:
 # Unit Tests (By Developer)
 
 Purpose: Test individual components or functions of a program to ensure they work as expected.
-Tools: JUnit, Vitest, pytest.
 
 [source](https://github.com/microsoft/calculator/blob/09a39a500e5b3dd2778df58d8ddc61e652246a24/src/CalculatorUnitTests/DateCalculatorUnitTests.cpp?plain=1#L997-L1017)
 
@@ -129,7 +144,6 @@ Tools: JUnit, Vitest, pytest.
 # Integration Tests (By Developer)
 
 Purpose: Verify that different modules or services within an application work together as intended.
-Tools: Postman, REST-assured
 
 [source](https://github.com/neovim/neovim/blob/dde2cc65fd2ac89ad88b19df08dc03cf1da50316/test/functional/plugin/lsp/diagnostic_spec.lua?plain=1#L127-L154)
 
@@ -140,16 +154,12 @@ Tools: Postman, REST-assured
 # Functional Tests (By QA)
 
 Purpose: Ensure the software behaves according to the specified requirements and that the user’s interactions perform correctly.
-Example: Checking that a user can successfully log in using correct credentials.
-Tools: Selenium, Cypress, Playwright.
 
 ---
 
 # Regression Tests (By QA)
 
 Purpose: Verify that new changes or features haven't broken existing functionality.
-Example: Ensuring that a new feature doesn’t interfere with previous features like login, search, etc.
-Tools: Selenium, TestComplete, QTP.
 
 ---
 
@@ -174,8 +184,6 @@ Purpose: Evaluate the software’s performance & condition.
 # Load Tests (By QA Maybe)
 
 Purpose: Test how the application performs under normal and heavy load conditions.
-Example: Assessing how many users a website can handle at once without crashing.
-Tools: Apache JMeter, BlazeMeter, LoadRunner.
 
 [source](https://github.com/antonputra/tutorials/blob/5098b4b9738a920a8a5708f7721faa843449855f/lessons/145/tests/go-app-1.js?plain=1#L4-L31)
 
@@ -210,16 +218,12 @@ Purpose: Test the entire application workflow from start to finish to ensure the
 # UI Tests (By QA)
 
 Purpose: Ensure the user interface works as intended, including button clicks, form inputs, and navigation.
-Example: Verifying that a "Submit" button works after entering data in a form.
-Tools: Selenium, Cypress, TestCafe.
 
 ---
 
 # API Tests (By QA)
 
 Purpose: Validate that APIs return the correct data and handle requests appropriately.
-Example: Ensuring a weather API returns accurate weather data based on the requested parameters.
-Tools: Postman, RestAssured, SoapUI.
 
 [source](https://github.com/typicode/json-server/blob/6aa56d9581488d9bcd1baf42c4c97b293cd9ee99/src/app.test.ts?plain=1#L109-L128)
 
@@ -359,7 +363,19 @@ WARNING: CDP support for Firefox is deprecated and will be removed in future ver
 
 ![webdriver bidi architecture](assets/webdriver-bidi-architecture.png)
 
-To enable BiDi all you have to do is,
+---
+
+### Enable BiDi
+
+#### Chrome
+
+```java
+var options = new ChromeOptions();
+options.setCapability("webSocketUrl", true);
+browser = new ChromeDriver(options);
+```
+
+#### Firefox
 
 ```java
 var options = new FirefoxOptions();
@@ -369,7 +385,7 @@ browser = new FirefoxDriver(options);
 
 ---
 
-## Remove extensions
+## (Side topic) Remove extensions
 
 > [!NOTE]
 > While most Selenium commands are included in the specification, some things are browser specific
@@ -397,6 +413,8 @@ browser = new FirefoxDriver(options);
 ---
 
 ## Step 3 - DemoQA form validation
+
+(changes)[https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/step-2...step-3]
 
 - Manually check the website [https://demoqa.com/text-box](https://demoqa.com/text-box)
 - Inspect the element in the form and output
@@ -450,6 +468,8 @@ ELI5 description;
 ---
 
 ## Step 4 - Page object model design pattern
+
+(changes)[https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/step-3...step-4]
 
 ### Why page object model
 
@@ -514,4 +534,44 @@ public class DemoQATextboxOutputPage {
 
 ---
 
-## test
+# Step 5 - Data driven testing
+
+Data-Driven Testing (DDT) is a software testing methodology in which test scripts execute a set of test cases using different sets of input data.
+
+> [!NOTE]
+> The following example demonstrates how to supply different data sets to tests, which is a crucial aspect of data-driven testing. However, it does not address handling varying scenarios based on the input data
+
+```java
+@ParameterizedTest
+@ValueSource(strings = { "Srinesh,srinesh@email.com", "Nisala,nisala@email.com" })
+void test(String detils) {
+  browser.get("https://demoqa.com/text-box");
+
+  var splitDetails = detils.split(",");
+  var fullName = splitDetails[0];
+  var email = splitDetails[1];
+
+  DemoQATextboxPage.init(browser).fillForm(fullName, email);
+  DemoQATextboxOutputPage.init(browser).validateForm(fullName, email);
+}
+```
+
+---
+
+# Step 6 - Headless mode
+
+### Chrome
+
+```java
+var options = new ChromeOptions();
+options.addArguments("--headless=new");
+browser = new ChromeDriver(options);
+```
+
+### Firefox
+
+```java
+var options = new FirefoxOptions();
+options.addArguments("--headless");
+browser = new FirefoxDriver(options);
+```
