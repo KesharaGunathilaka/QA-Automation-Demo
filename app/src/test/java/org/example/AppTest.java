@@ -13,6 +13,7 @@ class AppTest {
   void appHasAGreeting() {
     var browser = new FirefoxDriver();
     browser.get("https://www.google.com");
+    assertEquals(browser.getTitle(), "Google");
     browser.close();
   }
 }
