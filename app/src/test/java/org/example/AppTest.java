@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AppTest {
+class GoogleAppTest {
   @Test
   void googleLoadTest() {
     var browser = new FirefoxDriver();
