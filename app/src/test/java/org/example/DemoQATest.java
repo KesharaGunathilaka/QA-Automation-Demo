@@ -17,6 +17,7 @@ public class DemoQATest {
     public void beforeEach() {
         var options = new FirefoxOptions();
         options.addArguments("--safe-mode");
+        options.addArguments("--headless");
         options.setCapability("webSocketUrl", true);
         browser = new FirefoxDriver(options);
     }
