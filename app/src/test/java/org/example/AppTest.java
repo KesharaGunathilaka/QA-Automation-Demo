@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
   @Test
-  void appHasAGreeting() {
+  void googleLoadTest() {
     var browser = new FirefoxDriver();
     browser.get("https://www.google.com");
     assertEquals(browser.getTitle(), "Google");
