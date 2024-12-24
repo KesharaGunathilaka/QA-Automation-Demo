@@ -1,10 +1,35 @@
 ---
 title: Introduction to QA Automation
 sub_title: (Quality Assurance)
-theme:
-  name: catppuccin-mocha
-options:
-  end_slide_shorthand: true
+transition: drop
+---
+
+<style>
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  section {
+    padding: 1rem;
+    overflow: hidden;
+    height: 100%;
+  }
+  p {
+    font-size: 15px;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  li {
+    font-size: 20px;
+  }
+  table {
+    font-size: 20px;
+  }
+</style>
+
+# Introduction to QA Automation
+
 ---
 
 # I'm Srinesh Nisala
@@ -19,7 +44,6 @@ options:
 
 # Heads up
 
-- This includes my opinion + experience and some of the things might be different from the theory you have learnt
 - Anything that has the potential to go wrong is likely to do so during a live demo
 
 ---
@@ -44,10 +68,16 @@ options:
 > [!TIP]
 > If the job vacancy specifies _"QA Automation Engineer"_, your primary focus will likely be on automation tasks
 
-## Programming knowledge vs QA
+- **QA Engineer** - Manual / Automation
+- **Manual QA Engineer** - Manual
+- **QA Automation Engineer** - Automation
 
-- **Manual QA Engineer** - _No programming knowledge needed_
-- **QA Automation Engineer** - _Need basic programming knowledge_
+---
+
+# Programming Skills
+
+- **Manual QA Engineer** - No programming knowledge needed
+- **QA Automation Engineer** - Need basic programming knowledge
 
 > [!NOTE]
 > Some companies has their own in-house automation tools that requires no programming knowledge to automate an applications
@@ -56,32 +86,46 @@ options:
 
 # Salaries of QAs & Senior QAs
 
-> [!TIP]
-> If you’ve got what it takes, why not start your own company and be an entrepreneur
+- Your performance & skills
+- Experience
+- Designation
+- Based on the company
+- Company politics (You could see this in very few work places)
 
-> [!NOTE]
-> Salary varies based on various different things
->
-> - Your performance & skills
-> - Experience
-> - \* Designation \*
-> - Based on the company
-> - Company politics (You could see this in very few work places)
+---
+
+<style scoped>
+section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+img {
+  width: 100%;
+}
+</style>
 
 <!-- column_layout: [1, 1] -->
 
 <!-- column: 0 -->
 
+<div>
+
 ## QA Engineer Salary
 
 ![QA Engineer Salary](assets/qa-engineer-salary.png)
 
+</div>
+
 <!-- column: 1 -->
+<div>
 
 ## Senior QA Engineer Salary
 
 ![Senior QA Engineer Salary](assets/sqa-engineer-salary.png)
 
+</div>
 <!-- reset_layout -->
 
 ---
@@ -101,19 +145,18 @@ options:
 
 ---
 
-# Test types
+# Test Types
+
+<style scoped>
+  li {
+    font-size: 17px;
+  }
+</style>
 
 > [!TIP]
 > Better to memorize types of test in an interview
-
-> [!TIP]
 > Don't automate everything, but don't do everything manually either
-
-> [!TIP]
 > No company has enough budget to do all these tests
-
-> [!NOTE]
-> There may not be strict guidelines on who is responsible for which tests
 
 - Unit Tests
 - Integration Tests
@@ -133,6 +176,8 @@ options:
 
 # Unit Tests (By Developer)
 
+<style scoped>img { width: 70%; }</style>
+
 Purpose: Test individual components or functions of a program to ensure they work as expected.
 
 [source](https://github.com/microsoft/calculator/blob/09a39a500e5b3dd2778df58d8ddc61e652246a24/src/CalculatorUnitTests/DateCalculatorUnitTests.cpp?plain=1#L997-L1017)
@@ -142,6 +187,8 @@ Purpose: Test individual components or functions of a program to ensure they wor
 ---
 
 # Integration Tests (By Developer)
+
+<style scoped>img { width: 53%; }</style>
 
 Purpose: Verify that different modules or services within an application work together as intended.
 
@@ -175,6 +222,8 @@ Purpose: Perform basic tests to determine if the critical functionalities of the
 
 # Performance Tests (By QA Maybe)
 
+<style scoped>img { width: 60%; }</style>
+
 Purpose: Evaluate the software’s performance & condition.
 
 ![Performance test from chrome lighthouse for google](assets/performance-test-from-chrome-lighthouse-for-google.png)
@@ -182,6 +231,8 @@ Purpose: Evaluate the software’s performance & condition.
 ---
 
 # Load Tests (By QA Maybe)
+
+<style scoped>img { width: 30%; }</style>
 
 Purpose: Test how the application performs under normal and heavy load conditions.
 
@@ -192,6 +243,8 @@ Purpose: Test how the application performs under normal and heavy load condition
 ---
 
 # Security Tests (By Security Testers & maybe by QA)
+
+<style scoped>img { width: 60%; }</style>
 
 Purpose: Identify vulnerabilities in the software, ensuring data protection and preventing security breaches.
 
@@ -207,6 +260,8 @@ Purpose: Validate whether the software meets the client’s requirements and is 
 
 # End-to-End Tests (By QA)
 
+<style scoped>img { width: 55%; }</style>
+
 Purpose: Test the entire application workflow from start to finish to ensure the system works as expected in a production-like environment.
 
 [source](https://github.com/Chocobozzz/PeerTube/blob/0b145cfc9ac2eebd3ca922a7e38cf000e7e75348/client/e2e/src/suites-local/signup.e2e-spec.ts?plain=1#L322-L407)
@@ -217,11 +272,19 @@ Purpose: Test the entire application workflow from start to finish to ensure the
 
 # UI Tests (By QA)
 
+<style scoped>img { width: 65%; }</style>
+
 Purpose: Ensure the user interface works as intended, including button clicks, form inputs, and navigation.
+
+[source](https://github.com/meteor/e2e/blob/8e74741f46e14d8918399144fa22692002ebab02/specs/auth/email.js?plain=1#L15-L26)
+
+![ui test example from meteor](assets/ui-test-example-from-meteor.png)
 
 ---
 
 # API Tests (By QA)
+
+<style scoped>img { width: 55%; }</style>
 
 Purpose: Validate that APIs return the correct data and handle requests appropriately.
 
@@ -249,7 +312,9 @@ Purpose: Ensure the UI visually appears as intended after updates by comparing s
 
 ---
 
-# Why UI testing? (Manual / Automated)
+# UI tests
+
+## Why UI testing? (Manual / Automated)
 
 - Validate User Experience
 - Cross-Browser and Cross-Device Compatibility
@@ -257,25 +322,49 @@ Purpose: Ensure the UI visually appears as intended after updates by comparing s
 - Test Integration with Back-End
 - Accessibility Compliance
 
-# Why automated testing
+## Why automated testing
 
-- Saves time and effort
-- Improves accuracy
+- Speed
+- Reusability
+- Consistency
+- Continuous Integration and Deployment
 - Detects regression issues quickly
 - Reduces costs in the long run
-- Supports agile and devops practices
+
+---
+
+# Popular web UI automation frameworks
+
+| Feature                  | Selenium                      | Cypress          | Playwright        |
+| ------------------------ | ----------------------------- | ---------------- | ----------------- |
+| Browser support          | ✅✅                          | ✅               | ✅                |
+| Language Support         | ✅                            | JS               | Java, Python, JS  |
+| Ease of Setup            | ✅                            | ✅               | ✅                |
+| Ease of Use              | Hard                          | Easy             | Moderately simple |
+| Built-in Debugging Tools | Limited                       | Excellent        | Good              |
+| Parallel Execution       | Requires config               | Limited (via CI) | ✅                |
+| Released in              | 2004                          | 2017             | 2020              |
+| Popularity               | Selenium! selenium everywhere | Ok               | Ok                |
+| Stability                | Rock solid                    | Questionable     | Ok                |
+| Technology               | Webdriver                     | WebAPI           | CDP               |
 
 ---
 
 # Selenium
 
-## Major components of Selenium
+**tldr;** Instead of using mouse and keyboard to control browser, you call a Selenium function.
+
+> Selenium is a software project that allows you to automate web applications using various browsers
+
+---
+
+## Components of Selenium
 
 ELI5 description
 
-- **Web Driver** - tldr; jar file with bunch of classes to automate browser
-- **Selenium IDE** - tldr; records actions you perform on browser and creates an automation script
-- **Selenium Grid** - tldr; Run tests remotely
+- **Web Driver** - jar file with bunch of classes to automate browser
+- **Selenium IDE** - records actions you perform on browser and creates an automation script
+- **Selenium Grid** - Run tests remotely
 
 ![Selenium components](assets/selenium-components.png)
 
@@ -300,7 +389,7 @@ ELI5 description
 
 ## Selenium Web Driver hands on
 
-## Pre-requisites
+### Pre-requisites
 
 - Java 21
 - Gradle 8
@@ -357,6 +446,8 @@ WARNING: CDP support for Firefox is deprecated and will be removed in future ver
 
 ### WebDriver classic architecture
 
+<style scoped>img { width: 45%; }</style>
+
 ![webdriver classic architecture](assets/webdriver-classic-architecture.png)
 
 ### WebDriver BiDi architecture
@@ -385,7 +476,7 @@ browser = new FirefoxDriver(options);
 
 ---
 
-## (Side topic) Remove extensions
+## (Off topic) Remove extensions
 
 > [!NOTE]
 > While most Selenium commands are included in the specification, some things are browser specific
@@ -414,12 +505,23 @@ browser = new FirefoxDriver(options);
 
 ## Step 3 - DemoQA form validation
 
-(changes)[https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/step-2...step-3]
+<style scoped>
+.cc {
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  gap: 1rem;
+  height: 50%;
+}
+</style>
+
+[changes](https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/step-2...step-3)
 
 - Manually check the website [https://demoqa.com/text-box](https://demoqa.com/text-box)
 - Inspect the element in the form and output
 - Capture the element to execute actions
 - Validate the data after submit
+
+<div class="cc">
 
 ```java
 @BeforeEach
@@ -451,6 +553,8 @@ assertTrue(acName.endsWith("Srinesh Nisala"));
 assertTrue(acEmail.endsWith("random@gmail.com"));
 ```
 
+</div>
+
 ---
 
 ## Common Exceptions
@@ -469,7 +573,7 @@ ELI5 description;
 
 ## Step 4 - Page object model design pattern
 
-(changes)[https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/step-3...step-4]
+[changes](https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/step-3...step-4)
 
 ### Why page object model
 
@@ -479,9 +583,18 @@ ELI5 description;
 
 ---
 
+- Create pages from form and form output
+
+<style scoped>
+.cc {
+  font-size:12px;
+}
+</style>
+
 <!-- column_layout: [1, 1] -->
 
 <!-- column: 0 -->
+<div class="cc">
 
 ```java
 public class DemoQATextboxPage {
@@ -532,9 +645,17 @@ public class DemoQATextboxOutputPage {
 }
 ```
 
+</div>
+
 ---
 
 # Step 5 - Data driven testing
+
+<style scoped>
+marp-pre {
+  font-size: 16px;
+}
+</style>
 
 (changes)[https://github.com/s1n7ax/lecture-intro-to-qa-automation/compare/step-4...step-5]
 
@@ -579,3 +700,7 @@ var options = new FirefoxOptions();
 options.addArguments("--headless");
 browser = new FirefoxDriver(options);
 ```
+
+---
+
+# Questions?
