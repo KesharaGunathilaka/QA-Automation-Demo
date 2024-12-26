@@ -84,7 +84,7 @@ transition: drop
 
 ---
 
-# Salaries of QAs & Senior QAs
+# Salaries
 
 - Your performance & skills
 - Experience
